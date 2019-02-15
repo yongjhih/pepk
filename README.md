@@ -32,6 +32,13 @@ curl -L https://raw.githubusercontent.com/yongjhih/pepk/master/docker-pepk -o ~/
 pepk --keystore=foo.keystore --alias=foo --output=output.zip --encryptionkey=xxx --include-cert
 ```
 
+You will see the output.zip contains
+
+```
+├── certificate.pem
+└── encryptedPrivateKey
+```
+
 ## Development
 
 ```sh
