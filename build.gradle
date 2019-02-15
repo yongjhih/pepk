@@ -25,31 +25,9 @@ dependencies {
     testImplementation 'junit:junit:4.12'
 }
 
-tasks.withType(Test) {
-  testLogging {
-    exceptionFormat "full"
-    events "passed", "skipped", "failed", "standardOut", "standardError"
-    showStandardStreams = true
-  }
-}
-
 apply from: 'javadoc.gradle'
-
-apply plugin: 'jacoco'
-
-jacocoTestReport {
-    sourceDirectories = files(sourceSets.main.allSource.srcDirs)
-    classDirectories =  files(sourceSets.main.output)
-    executionData = files(jacocoTestReport.executionData)
-    reports {
-        xml.enabled = true // coveralls needed
-        html.enabled = true
-    }
-}
-
-tasks.jacocoTestReport {
-    dependsOn 'test'
-}
+apply from: 'test.gradle'
+apply from: 'jacoco.gradle'
 
 application {
     mainClassName = 'com.google.wireless.android.vending.developer.signing.tools.extern.export.ExportEncryptedPrivateKeyTool'

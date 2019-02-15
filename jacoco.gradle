@@ -1,0 +1,16 @@
+apply plugin: 'jacoco'
+
+jacocoTestReport {
+    sourceDirectories = files(sourceSets.main.allSource.srcDirs)
+    classDirectories =  files(sourceSets.main.output)
+    executionData = files(jacocoTestReport.executionData)
+    reports {
+        xml.enabled = true // coveralls needed
+        html.enabled = true
+    }
+}
+
+tasks.jacocoTestReport {
+    dependsOn 'test'
+}
+
