@@ -65,6 +65,12 @@ build.time=Mon Jan 14 05\:41\:46 2019 (1547473306)
 build.citc.snapshot=-1
 ```
 
+## References
+
+* https://developer.android.com/studio/publish/app-signing
+* Original [pepk.jar](https://www.gstatic.com/play-apps-publisher-rapid/signing-tool/prod/pepk.jar)
+* Original [pepk-src.jar](https://www.gstatic.com/play-apps-publisher-rapid/signing-tool/prod/pepk-src.jar)
+
 ## License
 
 Android 2.0 - Google Inc, 2017
