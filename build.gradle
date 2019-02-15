@@ -1,6 +1,6 @@
 plugins {
     id 'java'
-    id "net.ltgt.errorprone" version "0.7"
+    //id "net.ltgt.errorprone" version "0.7"
 }
 
 repositories {
@@ -13,9 +13,9 @@ sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
 
 dependencies {
-    //errorprone("com.google.errorprone:error_prone_core:2.3.2")
-    //errorproneJavac("com.google.errorprone:javac:1.8.0-u20")
-    //errorproneJavac('com.google.errorprone:javac:9+181-r4173-1')
+    //errorprone("com.google.errorprone:error_prone_core:2.3.2") // for java9
+    //errorproneJavac("com.google.errorprone:javac:1.8.0-u20") // for java8
+    //errorproneJavac('com.google.errorprone:javac:9+181-r4173-1') // or for java8
 
     testCompile 'junit:junit:3.8.2'
 }
