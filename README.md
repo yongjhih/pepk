@@ -1,4 +1,8 @@
-# PEPK - Export Encrypted Private Key Tool
+# PEPK - Play Encrypt Private Key
+
+pepk (Play Encrypt Private Key) is a tool for exporting private keys from a
+Java Keystore and encrypting them for transfer to Google Play as part of
+enrolling in App Signing by Google Play.
 
 ## About
 
@@ -11,6 +15,19 @@ Use the command below to run the tool, which will export and encrypt your privat
 
 ```
 java -jar pepk.jar --keystore=foo.keystore --alias=foo --output=output.zip --encryptionkey=xxx --include-cert
+```
+
+Using docker:
+
+```
+docker run --rm -it -v $(pwd):$(pwd) -w $(pwd) yongjhih/pepk --keystore=foo.keystore --alias=foo --output=output.zip --encryptionkey=xxx --include-cert
+```
+
+Using [docker-pepk](docker-pepk) into `~/bin/pepk`:
+
+```
+curl -L https://raw.githubusercontent.com/yongjhih/pepk/master/docker-pepk -o ~/bin/pepk && chmod a+x ~/bin/pepk
+pepk --keystore=foo.keystore --alias=foo --output=output.zip --encryptionkey=xxx --include-cert
 ```
 
 ## Development
