@@ -15,47 +15,51 @@ just make it capable of modifying and building with gradle.
 
 Use the command below to run the tool, which will export and encrypt your private key and its public certificate. Ensure that you replace the arguments highlighted in bold. Then enter your store and key passwords when prompted.
 
-```
+```sh
 java -jar pepk.jar --keystore=foo.keystore --alias=foo --output=output.zip --encryptionkey=xxx --include-cert
 ```
 
 Using docker:
 
-```
+```sh
 docker run --rm -it -v $(pwd):$(pwd) -w $(pwd) yongjhih/pepk --keystore=foo.keystore --alias=foo --output=output.zip --encryptionkey=xxx --include-cert
 ```
 
 Using [docker-pepk](docker-pepk) into `~/bin/pepk`:
 
-```
+```sh
 curl -L https://raw.githubusercontent.com/yongjhih/pepk/master/docker-pepk -o ~/bin/pepk && chmod a+x ~/bin/pepk
 pepk --keystore=foo.keystore --alias=foo --output=output.zip --encryptionkey=xxx --include-cert
 ```
 
 ## Development
 
-```
+```sh
 ./gradlew run --args='--keystore=foo.keystore --alias=foo --output=output.zip --encryptionkey=xxx --include-cert'
 ```
 
 or
 
-```
+```sh
 ./gradlew shadowJar
 java -jar build/libs/pepk.jar --keystore=foo.keystore --alias=foo --output=output.zip --encryptionkey=xxx --include-cert
 ```
 
 ## Deployment
 
-```
+```sh
 ./gradlew shadowJar
 ```
 
-Upload build/libs/pepk.jar into [releases](releases)
+Upload build/libs/pepk.jar into [releases](https://github.com/yongjhih/pepk/releases)
 
 ## Installation
 
-Download pepk.jar from [releases](releases)
+If you dont use docker, you have to download pepk.jar from [releases](https://github.com/yongjhih/pepk/releases)
+
+```sh
+java -jar pepk.jar ARGS
+```
 
 ## Build
 
