@@ -15,17 +15,19 @@ just make it capable of modifying and building with gradle.
 
 Use the command below to run the tool, which will export and encrypt your private key and its public certificate. Ensure that you replace the arguments highlighted in bold. Then enter your store and key passwords when prompted.
 
+Using [installed](#installation) pepk.jar
+
 ```sh
 java -jar pepk.jar --keystore=foo.keystore --alias=foo --output=output.zip --encryptionkey=xxx --include-cert
 ```
 
-Using docker:
+or using docker:
 
 ```sh
 docker run --rm -it -v $(pwd):$(pwd) -w $(pwd) yongjhih/pepk --keystore=foo.keystore --alias=foo --output=output.zip --encryptionkey=xxx --include-cert
 ```
 
-Using [docker-pepk](docker-pepk) into `~/bin/pepk`:
+or using [docker-pepk](docker-pepk) into `~/bin/pepk`:
 
 ```sh
 curl -L https://raw.githubusercontent.com/yongjhih/pepk/master/docker-pepk -o ~/bin/pepk && chmod a+x ~/bin/pepk
