@@ -1,0 +1,35 @@
+USAGE:
+       java -jar pepk.jar --keystore <release_keystore> --alias <key_alias> --encryptionkey=<encryption_key_hex> --output=<output_file> [--signing-keystore <keystore> [--signing-key-alias=<alias>]] [--include-cert]
+
+pepk (Play Encrypt Private Key) is a tool for exporting private keys from a
+Java Keystore and encrypting them for transfer to Google Play as part of
+enrolling in App Signing by Google Play.
+
+
+        REQUIRED FLAGS
+
+--keystore            Path to the keystore containing the private key to export
+
+--alias               Alias of the private key in the keystore
+
+--encryptionkey       Public key to encrypt the private key with. This will be
+                      be the hex encoded bytes of the public key. The public key
+                      is a 4-byte identity followed by a 64-byte P256 point.
+
+--output              File in which to output the encrypted private key.
+
+        OPTIONAL FLAGS
+
+--signing-keystore    Path to the keystore containing the private key that will
+                      be used for signing the exported encrypted private key.
+
+--signing-key-alias   Alias of the private key used for signing in the
+                      signing Keystore. Must be specified if -signing-keystore
+                      flag is set.
+
+--include-cert        Include the public certificate to be exported along with
+                      the encrypted private key.
+
+        OTHER OPTIONS
+
+--help                Show this usage page and exit
