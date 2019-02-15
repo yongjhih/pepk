@@ -1,5 +1,10 @@
 # PEPK - Export Encrypted Private Key Tool
 
+## About
+
+This repository is totally imported from Google [pepk-src.jar](https://www.gstatic.com/play-apps-publisher-rapid/signing-tool/prod/pepk-src.jar),
+just make it capable of modifying and building with gradle.
+
 ## Usage
 
 Use the command below to run the tool, which will export and encrypt your private key and its public certificate. Ensure that you replace the arguments highlighted in bold. Then enter your store and key passwords when prompted.
