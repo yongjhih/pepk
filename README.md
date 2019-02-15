@@ -4,6 +4,8 @@ pepk (Play Encrypt Private Key) is a tool for exporting private keys from a
 Java Keystore and encrypting them for transfer to Google Play as part of
 enrolling in App Signing by Google Play.
 
+Use this code (the code performs EC-P256+AES-GCM hybrid encryption) with the hex encoded public key (a 4-byte identity followed by a 64-byte P256 point) below to create your own tool exporting in a zip file the encrypted private key and the public certificate in PEM format.
+
 ## About
 
 This repository is totally imported from Google [pepk-src.jar](https://www.gstatic.com/play-apps-publisher-rapid/signing-tool/prod/pepk-src.jar),

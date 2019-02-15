@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+keystore=${1:-signing-release.jks}
+keytool -list -v -keystore $keystore -alias signing-release -storepass storepass -keypass keypass

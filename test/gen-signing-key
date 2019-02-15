@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+keytool -genkey \
+        -dname "CN=Andrew Chen, OU=Andrew, O=Chen, C=US" \
+        -alias signing-release \
+        -keypass keypass \
+        -keystore signing-release.jks \
+        -storepass storepass \
+        -validity 20000 \
+        -keyalg RSA \
+        -keysize 2048
