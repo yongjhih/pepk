@@ -1,36 +1,22 @@
-buildscript {
-    ext.kotlin_version = '1.3.11'
-
-    repositories {
-        jcenter()
-    }
-
-    dependencies {
-        //classpath 'com.github.johnrengelman.shadow:4.0.3'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-    }
-}
-
-apply plugin: "kotlin"
-
-compileKotlin {
-    kotlinOptions {
-        jvmTarget = "1.8"
-    }
-}
-compileTestKotlin {
-    kotlinOptions {
-        jvmTarget = "1.8"
-    }
+plugins {
+    id 'java'
+    id "net.ltgt.errorprone" version "0.7"
 }
 
 repositories {
     jcenter()
+    mavenCentral()
     maven { url 'https://jitpack.io' }
 }
 
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
+
 dependencies {
-    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    //errorprone("com.google.errorprone:error_prone_core:2.3.2")
+    //errorproneJavac("com.google.errorprone:javac:1.8.0-u20")
+    //errorproneJavac('com.google.errorprone:javac:9+181-r4173-1')
+
     testCompile 'junit:junit:3.8.2'
 }
 
