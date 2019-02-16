@@ -1,3 +1,5 @@
+[![](https://jitpack.io/v/yongjhih/pepk.svg)](https://jitpack.io/#yongjhih/pepk)
+
 # PEPK - Play Encrypt Private Key
 
 pepk (Play Encrypt Private Key) is a tool for exporting private keys from a
@@ -11,7 +13,7 @@ Use this code (the code performs EC-P256+AES-GCM hybrid encryption) with the hex
 This repository is totally imported from Google [pepk-src.jar](https://www.gstatic.com/play-apps-publisher-rapid/signing-tool/prod/pepk-src.jar),
 just make it capable of modifying and building with gradle.
 
-## Usage
+## Usage of command line
 
 Use the command below to run the tool, which will export and encrypt your private key and its public certificate. Ensure that you replace the arguments. Then enter your store and key passwords when prompted.
 
@@ -41,6 +43,9 @@ You will see the output.zip contains
 └── encryptedPrivateKey
 ```
 
+## Usage as library
+
+
 ## Development
 
 ```sh
@@ -62,7 +67,7 @@ java -jar build/libs/pepk.jar --keystore=foo.keystore --alias=foo --output=outpu
 
 Upload build/libs/pepk.jar into [releases](https://github.com/yongjhih/pepk/releases)
 
-## Installation
+## Installation of command line tool
 
 If you dont use docker, you have to download pepk.jar from [releases](https://github.com/yongjhih/pepk/releases)
 
@@ -70,10 +75,16 @@ If you dont use docker, you have to download pepk.jar from [releases](https://gi
 java -jar pepk.jar ARGS
 ```
 
-## Build
+## Installation of as library
 
 ```
-./gradlew assemble
+repositories {
+    maven { url 'https://jitpack.io' }
+}
+
+dependencies {
+    implementation 'com.github.yongjhih:pepk:-SNAPSHOT'
+}
 ```
 
 ## Changelogs
