@@ -1,4 +1,5 @@
 [![](https://jitpack.io/v/yongjhih/pepk.svg)](https://jitpack.io/#yongjhih/pepk)
+[![javadoc](https://img.shields.io/github/tag/yongjhih/pepk.svg?label=javadoc)](https://jitpack.io/com/github/yongjhih/pepk/-SNAPSHOT/javadoc/)
 
 # PEPK - Play Encrypt Private Key
 
