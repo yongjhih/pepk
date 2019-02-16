@@ -18,6 +18,7 @@ package com.google.wireless.android.vending.developer.signing.tools.extern.expor
 import static com.google.wireless.android.vending.developer.signing.tools.extern.export.Utils.checkNotNull;
 import static java.nio.charset.StandardCharsets.US_ASCII;
 
+import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.ImmutableList;
 import com.google.security.keymaster.lite.KeymaestroHybridEncrypter;
 import java.io.BufferedReader;
@@ -183,6 +184,12 @@ public class ExportEncryptedPrivateKeyTool {
     return pemString.getBytes(US_ASCII);
   }
 
+  @VisibleForTesting
+  public static byte[] certificateToPemTesting(Certificate certificate)
+      throws CertificateEncodingException {
+      return certificateToPem(certificate);
+  }
+
   private static byte[] certificateToPem(Certificate certificate)
       throws CertificateEncodingException {
     return ("-----BEGIN CERTIFICATE-----\n"
@@ -217,6 +224,11 @@ public class ExportEncryptedPrivateKeyTool {
       zipOutputStream.write(pemEncodedCertificate);
       zipOutputStream.closeEntry();
     }
+  }
+
+  @VisibleForTesting
+  public static byte[] fromHexTesting(String s) {
+    return fromHex(s);
   }
 
   private static byte[] fromHex(String s) {

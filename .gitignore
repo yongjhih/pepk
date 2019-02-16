@@ -12,3 +12,6 @@
 local.properties
 
 .*.sw[p-z]
+
+*.yml
+.idea/
