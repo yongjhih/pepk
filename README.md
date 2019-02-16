@@ -110,4 +110,4 @@ build.citc.snapshot=-1
 
 ## License
 
-Android 2.0 - Google Inc, 2017
+Apache 2.0 - Google Inc, 2017
