@@ -13,7 +13,7 @@ just make it capable of modifying and building with gradle.
 
 ## Usage
 
-Use the command below to run the tool, which will export and encrypt your private key and its public certificate. Ensure that you replace the arguments highlighted in bold. Then enter your store and key passwords when prompted.
+Use the command below to run the tool, which will export and encrypt your private key and its public certificate. Ensure that you replace the arguments. Then enter your store and key passwords when prompted.
 
 Using [installed](#installation) pepk.jar
 
