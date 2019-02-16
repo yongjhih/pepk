@@ -1,5 +1,6 @@
 [![](https://jitpack.io/v/yongjhih/pepk.svg)](https://jitpack.io/#yongjhih/pepk)
 [![javadoc](https://img.shields.io/github/tag/yongjhih/pepk.svg?label=javadoc)](https://jitpack.io/com/github/yongjhih/pepk/-SNAPSHOT/javadoc/)
+[![LICENSE](https://img.shields.io/packagist/l/yongjhih/pepk.svg?style=flat)](LICENSE)
 
 # PEPK - Play Encrypt Private Key
 
