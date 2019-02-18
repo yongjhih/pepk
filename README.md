@@ -53,7 +53,9 @@ val keyStore = KeyStore.getInstance("jks").apply {
 }
 val key = keyStore.getKey("signing", "keypass".toCharArray()) as PrivateKey
 
-val encryptedPrivateKey = KeymaestroHybridEncrypter(ExportEncryptedPrivateKeyTool.fromHexTesting("eb10fe8f7c7c9df715022017b00c6471f8ba8170b13049a11e6c09ffe3056a104a3bbe4ac5a955f4ba4fe93fc8cef27558a3eb9d2a529a2092761fb833b656cd48b9de6a"))
+fun String.fromHex(): ByteArray = this.chunked(2).map { it.toInt(16).toByte() }.toByteArray()
+
+val encryptedPrivateKey = KeymaestroHybridEncrypter("eb10fe8f7c7c9df715022017b00c6471f8ba8170b13049a11e6c09ffe3056a104a3bbe4ac5a955f4ba4fe93fc8cef27558a3eb9d2a529a2092761fb833b656cd48b9de6a".fromHex())
                             .encrypt(ExportEncryptedPrivateKeyTool.privateKeyToPem(key))
 
 println(encryptedPrivateKey)
