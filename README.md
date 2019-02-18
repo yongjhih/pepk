@@ -45,7 +45,7 @@ You will see the output.zip contains
 └── encryptedPrivateKey
 ```
 
-## Usage as library
+## Usage of library
 
 ```kotlin
 val keyStore = KeyStore.getInstance("jks").apply {
@@ -53,9 +53,9 @@ val keyStore = KeyStore.getInstance("jks").apply {
 }
 val key = keyStore.getKey("signing", "keypass".toCharArray()) as PrivateKey
 
-fun String.fromHex(): ByteArray = this.chunked(2).map { it.toInt(16).toByte() }.toByteArray()
+fun String.decodeHex(): ByteArray = this.chunked(2).map { it.toInt(16).toByte() }.toByteArray()
 
-val encryptedPrivateKey = KeymaestroHybridEncrypter("eb10fe8f7c7c9df715022017b00c6471f8ba8170b13049a11e6c09ffe3056a104a3bbe4ac5a955f4ba4fe93fc8cef27558a3eb9d2a529a2092761fb833b656cd48b9de6a".fromHex())
+val encryptedPrivateKey = KeymaestroHybridEncrypter("eb10fe8f7c7c9df715022017b00c6471f8ba8170b13049a11e6c09ffe3056a104a3bbe4ac5a955f4ba4fe93fc8cef27558a3eb9d2a529a2092761fb833b656cd48b9de6a".decodeHex())
                             .encrypt(ExportEncryptedPrivateKeyTool.privateKeyToPem(key))
 
 println(encryptedPrivateKey)
@@ -92,7 +92,7 @@ java -jar pepk.jar ARGS
 
 ## Installation of as library
 
-```
+```gradle
 repositories {
     maven { url 'https://jitpack.io' }
 }
@@ -101,6 +101,62 @@ dependencies {
     implementation 'com.github.yongjhih:pepk:-SNAPSHOT'
 }
 ```
+
+## Bonus - android pepk gradle
+
+Auto generate encrytpedPrivateKey file by applying gradle script:
+
+
+```gradle
+apply from: 'pepk.gradle'
+
+android {
+    release {
+        signingConfig {
+            storeFile file("${projectDir}/signing-release.jks")
+            // ...
+        }
+    }
+}
+```
+
+Add pepk.gradle and modify the encryption key:
+
+```gradle
+buildscript {
+    repositories {
+        jcenter()
+        maven { url 'https://jitpack.io' }
+    }
+    dependencies {
+        classpath 'com.github.yongjhih:pepk:-SNAPSHOT'
+    }
+}
+
+import com.google.security.keymaster.lite.KeymaestroHybridEncrypter
+import com.google.wireless.android.vending.developer.signing.tools.extern.export.ExportEncryptedPrivateKeyTool
+import java.security.KeyStore
+import java.security.PrivateKey
+
+afterEvaluate {
+    android.applicationVariants.all { variant ->
+        if (variant.signingConfig && file(variant.signingConfig.storeFile).exists() && !file("${variant.signingConfig.storeFile}.encryptedPrivateKey").exists()) {
+            def keyStore = KeyStore.getInstance("jks")
+            variant.signingConfig.storeFile.withInputStream { stream ->
+                keyStore.load(stream, variant.signingConfig.storePassword.toCharArray())
+            }
+            def key = keyStore.getKey(variant.signingConfig.keyAlias, variant.signingConfig.keyPassword.toCharArray())
+            def encryptedPrivateKey = new KeymaestroHybridEncrypter("eb10fe8f7c7c9df715022017b00c6471f8ba8170b13049a11e6c09ffe3056a104a3bbe4ac5a955f4ba4fe93fc8cef27558a3eb9d2a529a2092761fb833b656cd48b9de6a".decodeHex())
+                .encrypt(ExportEncryptedPrivateKeyTool.privateKeyToPem(key))
+            file("${variant.signingConfig.storeFile}.encryptedPrivateKey").withOutputStream {
+                it.write encryptedPrivateKey
+            }
+        }
+    }
+}
+```
+
+You will see `${projectDir}/signing-release.jks.encryptedPrivateKey` file has been generated.
 
 ## Changelogs
 
